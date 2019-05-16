@@ -2,15 +2,17 @@
     <div>
         <transition :name='transitionName'>
             <keep-alive :include="includeArray">
-                <router-view></router-view>
+                <router-view  :key="$route.fullPath" ></router-view>
             </keep-alive>
         </transition>
-        <loading v-model="isLoading" :text="loadingText" :isShowCancel="isShowCancel"></loading>
+
+
+        <!--<loading v-model="isLoading" :text="loadingText" :isShowCancel="isShowCancel"></loading>-->
     </div>
 </template>
 
 <script>
-	   import { Loading } from 'vux'
+  import { Loading } from 'vux'
 	import { mapState } from 'vuex'
 	import includeArray from './route/cacheRouteName';
 	export default {
@@ -33,36 +35,36 @@
 		},
 		watch: {
 			$route(to, from) {
-				let goTo = this.$router.goTo,
-					noAnimatePages = {
-						// 从下列页面跳转到其它页面都没有转场动画 eg:['/initial']
-						from: [],
-						// 跳转到下列页面都没有转场动画 eg:['/initial']
-						to: [],
-						// 同时满足to和from时没有转场动画 eg:[{to:'/message/detail', from:'/'}]
-						and: [{to:'/', from:'/'},{to:'/historyDetail', from:'/'}]
-					};
-				if (noAnimatePages.to.indexOf(to.path) > -1 || noAnimatePages.from.indexOf(from.path) > -1) {
-					this.noAnimate = true;
-				} else if (noAnimatePages.and.find(item => item.to === to.path && item.from === from.path)) {
-					this.noAnimate = true;
-				} else {
-					this.noAnimate = this.$router.noAnimate || false;
-				}
-				if (!this.noAnimate) {
-					// 判断页面回退还是前进
-					if (goTo) {
-						this.transitionName = 'bounce-in'
-					} else {
-						this.transitionName = 'bounce-out'
-					}
-				} else {
-					this.transitionName = 'no-animate'
-				}
-				window.scrollTo(0, 0);
-				this.$router.goTo = false;
-				this.$router.noAnimate = false;
-			}
+        let goTo = this.$router.goTo,
+          noAnimatePages = {
+            // 从下列页面跳转到其它页面都没有转场动画 eg:['/initial']
+            from: [],
+            // 跳转到下列页面都没有转场动画 eg:['/initial']
+            to: [],
+            // 同时满足to和from时没有转场动画 eg:[{to:'/message/detail', from:'/'}]
+            and: []
+          }
+        if (noAnimatePages.to.indexOf(to.path) > -1 || noAnimatePages.from.indexOf(from.path) > -1) {
+          this.noAnimate = true;
+        } else if (noAnimatePages.and.find(item => item.to === to.path && item.from === from.path)) {
+          this.noAnimate = true;
+        } else {
+          this.noAnimate = this.$router.noAnimate || false;
+        }
+        if (!this.noAnimate) {
+          // 判断页面回退还是前进
+          if (goTo) {
+            this.transitionName = 'bounce-in'
+          } else {
+            this.transitionName = 'bounce-out'
+          }
+        } else {
+          this.transitionName = 'no-animate'
+        }
+        window.scrollTo(0, 0);
+        this.$router.goTo = false;
+        this.$router.noAnimate = false;
+      }
 		}
 	}
 </script>

@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 import Vue from 'vue'
 import FastClick from 'fastclick'
-import router from 'route';
+import router from './route/index.js';
 import store from './store'
 import App from './App.vue';
 import {
@@ -20,7 +20,9 @@ Vue.prototype.$toast = function(text, time) {
 Vue.prototype.$hideToast = function() {
 	hideToast()
 };
+// 全局eventBUs
 Vue.prototype.$eventBus = eventBus;
+// 引入路由
 
 FastClick.attach(document.body);
 
@@ -36,7 +38,7 @@ Vue.directive('touchBg', {
 	}
 });
  new Vue({
-	router,
-	store,
-	render: h => h(App)
+   router,
+	 store,
+	 render: h => h(App)
 }).$mount('#app');
