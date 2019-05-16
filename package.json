@@ -1,8 +1,8 @@
 {
-  "name": "Mobile-h5-dev-mx-demand-collection",
+  "name": "vueLib",
   "version": "1.0.0",
-  "description": "美信需求收集",
-  "author": "ex_yelp1 <liping1.ye@partner.midea.com.cn>",
+  "description": "脚手架",
+  "author": "GAOJH",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",

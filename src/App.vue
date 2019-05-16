@@ -10,8 +10,7 @@
 </template>
 
 <script>
-	//    import { Loading } from 'vux'
-	import Loading from 'components/common/newLoading'
+	   import { Loading } from 'vux'
 	import { mapState } from 'vuex'
 	import includeArray from './route/cacheRouteName';
 	export default {

@@ -4,7 +4,6 @@ import FastClick from 'fastclick'
 import router from 'route';
 import store from './store'
 import App from './App.vue';
-import loading from 'src/components/common/loading'; // 加载的loading
 import {
 	toast,
 	hideToast
@@ -15,7 +14,6 @@ import { eventBus } from './js/eventBus'
 // let consoleTest = new vConsole();
 // 或者umd方式
 // 引入构建的js文件
-Vue.use(loading);
 Vue.prototype.$toast = function(text, time) {
 	toast(text, time)
 };
