@@ -11,7 +11,7 @@ import store from '../store';
 const routes = [
 	{
 		path: '/',
-		component: require('../components/home')
+		component: require('../pages/home')
 	},
 
 ];
