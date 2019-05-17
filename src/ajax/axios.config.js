@@ -1,11 +1,10 @@
-// import { configSer,httpSer } from 'vue2-app-libs';
 import axios from 'axios';
 import qs from 'qs';
-import Loading from '../components/loading/loading'
+// import Loading from '../components/loading/loading'
 // 添加请求拦截器
-let loadingInstance = new Loading
-
-let loadingPlugin = loadingInstance.init()
+// let loadingInstance = new Loading
+//
+// let loadingPlugin = loadingInstance.init()
 
 const CancelToken = axios.CancelToken;
 window.CancelToken = CancelToken
@@ -19,10 +18,10 @@ let httpNum=0
 axios.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
   httpNum++
-  loadingPlugin.show()
+  // loadingPlugin.show()
   return config;
 }, function (error) {
-  loadingPlugin.hide()
+  // loadingPlugin.hide()
   httpNum=0
   // 对请求错误做些什么
   return Promise.reject(error);

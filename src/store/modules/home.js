@@ -1,14 +1,8 @@
-import {api} from '../api';
-import { post, get } from '../ajax';
-import ProjectConfig from '../../project-config';
-import Platform from '../../platform';
-import { storage } from "../../js/common";
+
 
 const state = {
 	currentLocation: {
-		xAxes: null,
-		yAxes: null,
-		listData: null
+
 	}
 };
 

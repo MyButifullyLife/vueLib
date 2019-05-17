@@ -1,4 +1,4 @@
-import axiosConfig from '/axiosConfig.js';
+import axiosConfig from './axios.config.js';
 import url from './http.url'
 
 /**
