@@ -45,6 +45,7 @@ Vue.mixin(baseVue)
  * */
 Vue.directive('touchBg', {
   inserted: function (el) {
+    console.log(el)
     el.addEventListener('touchstart', (e) => {
       addClass(el, 'actived-bg');
     });

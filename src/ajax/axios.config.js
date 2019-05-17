@@ -1,10 +1,9 @@
 import axios from 'axios';
 import qs from 'qs';
-// import Loading from '../components/loading/loading'
+
+import store from '../store/index'
+console.log(store.state.isLoading)
 // 添加请求拦截器
-// let loadingInstance = new Loading
-//
-// let loadingPlugin = loadingInstance.init()
 
 const CancelToken = axios.CancelToken;
 window.CancelToken = CancelToken
@@ -18,10 +17,10 @@ let httpNum=0
 axios.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
   httpNum++
-  // loadingPlugin.show()
+  store.state.isLoading =true
   return config;
 }, function (error) {
-  // loadingPlugin.hide()
+  store.state.isLoading =false
   httpNum=0
   // 对请求错误做些什么
   return Promise.reject(error);
@@ -36,13 +35,13 @@ axios.interceptors.response.use(function (response) {
     httpNum = 0
   }
   if(httpNum===0){
-    loadingPlugin.hide()
+    store.state.isLoading =false
   }
   return response;
 }, function (error) {
   httpNum--
   if(httpNum===0){
-    loadingPlugin.hide()
+    store.state.isLoading =false
   }
 
   // 对响应错误做点什么

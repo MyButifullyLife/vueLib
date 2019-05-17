@@ -15,7 +15,6 @@ let httpServe = function(type,url,params){
 export default {
   httpServe,
   UserMenu(params){
-    return httpServe('post',url.UserMenu,params)
+    return httpServe('get',url.UserMenu,params)
   }
-
 }

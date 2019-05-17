@@ -7,7 +7,7 @@
         </transition>
 
 
-        <!--<loading v-model="isLoading" :text="loadingText" :isShowCancel="isShowCancel"></loading>-->
+        <loading v-model="isLoading" :text="loadingText" :isShowCancel="isShowCancel"></loading>
     </div>
 </template>
 
@@ -28,9 +28,9 @@
 		},
 		computed: {
 			...mapState({
-				isLoading: state => state.vux.isLoading,
-				isShowCancel: state => state.vux.isShowCancel,
-				loadingText: state => state.vux.loadingText || ''
+				isLoading: state => state.isLoading,
+				isShowCancel: state => state.isShowCancel,
+				loadingText: state => state.loadingText || ''
 			})
 		},
 		watch: {

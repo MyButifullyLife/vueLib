@@ -9,8 +9,8 @@ let exports = {
 	// base url 所有接口
 	get baseUrl() {
     let test ,prod;
-      test = 'http://testbigdataservice.midea.com/YXT_NEW';
-      prod = 'http://testbigdataservice.midea.com/YXT_NEW';
+      test = 'http://bigdataservice.midea.com/YXT_NEW';
+      prod = 'http://bigdataservice.midea.com/YXT_NEW';
     return this.isTest ? test : prod;
 
 	},
