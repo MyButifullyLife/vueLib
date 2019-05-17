@@ -1,6 +1,8 @@
 <template>
     <div style="background-color: red;">
         Hallo Word
+
+       <button></button>
     </div>
 </template>
 

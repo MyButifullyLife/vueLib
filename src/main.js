@@ -4,41 +4,57 @@ import FastClick from 'fastclick'
 import router from './route/index.js';
 import store from './store'
 import App from './App.vue';
+import baseVue from './pages/base/base.page.vue'
 import {
-	toast,
-	hideToast
+  toast,
+  hideToast
 } from './components/toast/toast.js';
-import { hasClass, addClass, removeClass } from './js/utils';
-import { eventBus } from './js/eventBus'
+import {hasClass, addClass, removeClass} from './js/utils';
+import {eventBus} from './js/eventBus'
+
+/**
+ *  vconsole 需要直接打开
+ * */
 // import vConsole from 'vconsole';
 // let consoleTest = new vConsole();
-// 或者umd方式
-// 引入构建的js文件
-Vue.prototype.$toast = function(text, time) {
-	toast(text, time)
+/**
+ *  全局 $toast
+ * */
+Vue.prototype.$toast = function (text, time) {
+  toast(text, time)
 };
-Vue.prototype.$hideToast = function() {
-	hideToast()
+Vue.prototype.$hideToast = function () {
+  hideToast()
 };
-// 全局eventBUs
+/**
+ *  全局eventBUs
+ * */
 Vue.prototype.$eventBus = eventBus;
-// 引入路由
-
+/**
+ *  FastClick
+ * */
 FastClick.attach(document.body);
 
-// 注册一个全局改变背景颜色
+/**
+ *  mixin 公共方法
+* */
+Vue.mixin(baseVue)
+
+/**
+ *  注册全局点击，点击对象赋上class，优化体验
+ * */
 Vue.directive('touchBg', {
-	inserted: function(el) {
-		el.addEventListener('touchstart', (e) => {
-			addClass(el, 'actived-bg');
-		});
-		el.addEventListener('touchend', (e) => {
-			removeClass(el, 'actived-bg');
-		});
-	}
+  inserted: function (el) {
+    el.addEventListener('touchstart', (e) => {
+      addClass(el, 'actived-bg');
+    });
+    el.addEventListener('touchend', (e) => {
+      removeClass(el, 'actived-bg');
+    });
+  }
 });
- new Vue({
-   router,
-	 store,
-	 render: h => h(App)
+new Vue({
+  router,
+  store,
+  render: h => h(App)
 }).$mount('#app');
