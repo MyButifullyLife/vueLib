@@ -42,7 +42,7 @@
             // 跳转到下列页面都没有转场动画 eg:['/initial']
             to: [],
             // 同时满足to和from时没有转场动画 eg:[{to:'/message/detail', from:'/'}]
-            and: []
+            and: [{to:'/', from:'/'}]
           }
         if (noAnimatePages.to.indexOf(to.path) > -1 || noAnimatePages.from.indexOf(from.path) > -1) {
           this.noAnimate = true;
